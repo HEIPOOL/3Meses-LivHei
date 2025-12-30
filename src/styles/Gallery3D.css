@@ -1,0 +1,148 @@
+/* Estilos base */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.three-canvas {
+  width: 100%;
+  height: 90vh;
+  display: block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Controles */
+.gallery-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+  z-index: 100;
+}
+
+.control-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .three-canvas {
+    height: 80vh;
+  }
+  
+  .gallery-controls {
+    bottom: 15px;
+  }
+  
+  .control-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .three-canvas {
+    height: 70vh;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  .gallery-controls {
+    bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .control-btn {
+    width: 80%;
+    max-width: 250px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  /* Otimizações para performance mobile */
+  .three-canvas canvas {
+    touch-action: pan-y;
+  }
+}
+
+/* Mobile Pequeno */
+@media (max-width: 480px) {
+  .three-canvas {
+    height: 60vh;
+  }
+  
+  .control-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Orientação paisagem mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .three-canvas {
+    height: 85vh;
+  }
+  
+  .gallery-controls {
+    bottom: 5px;
+  }
+}
+
+/* Tela muito grande */
+@media (min-width: 1920px) {
+  .three-canvas {
+    height: 95vh;
+  }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+  .three-canvas {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a235a 100%);
+  }
+  
+  .control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Adicione ao final do arquivo Gallery3D.css */
+
+/* Ajustes para compatibilidade com menu hambúrguer */
+.gallery-controls {
+  z-index: 100; /* Menor que o menu hambúrguer (1000) */
+}
+
+.three-canvas {
+  z-index: 1;
+}

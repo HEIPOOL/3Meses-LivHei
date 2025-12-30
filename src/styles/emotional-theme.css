@@ -1,0 +1,353 @@
+/* src/styles/emotional-theme.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Serif+Display&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  /* Cores principais - Tema emocional */
+  --color-love-red: #8B0000;
+  --color-passion-pink: #FF6B8B;
+  --color-golden-glow: #D4AF37;
+  --color-romantic-gold: #FFD700;
+  --color-soft-pink: #FFB6C1;
+  --color-deep-burgundy: #800020;
+  --color-velvet-purple: #4B0082;
+  
+  /* Cores de fundo com gradientes emocionais */
+  --color-bg-dark: #0A0A0A;
+  --color-bg-darker: #050505;
+  --color-bg-romantic: linear-gradient(135deg, #1A0000 0%, #0A0000 100%);
+  --color-bg-golden: linear-gradient(135deg, #2A2000 0%, #0A0000 100%);
+  --color-bg-passion: linear-gradient(135deg, #300000 0%, #1A0000 100%);
+  
+  /* Cores de texto */
+  --color-text-romantic: #FFFFFF;
+  --color-text-golden: #FFD700;
+  --color-text-soft: #FFB6C1;
+  --color-text-muted: #A0A0A0;
+  
+  /* Cores de destaque */
+  --color-accent-love: #FF1493;
+  --color-accent-gold: #FFD700;
+  --color-accent-rose: #FF6B8B;
+  
+  /* Efeitos de brilho */
+  --glow-intensity: 0.3;
+  --glow-color: rgba(255, 107, 139, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg-dark);
+  color: var(--color-text-romantic);
+  min-height: 100vh;
+}
+
+body {
+  background: var(--color-bg-romantic);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efeito de brilho sutil em todo o site */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 107, 139, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scrollbar emocional */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, var(--color-bg-dark), #1A0000);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-love-red), var(--color-passion-pink));
+  border-radius: 5px;
+  border: 2px solid var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--color-passion-pink), var(--color-accent-love));
+}
+
+/* Classes utilitárias emocionais */
+.romantic-glow {
+  box-shadow: 
+    0 0 20px var(--glow-color),
+    0 0 40px rgba(255, 107, 139, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.golden-glow {
+  box-shadow: 
+    0 0 25px rgba(212, 175, 55, 0.4),
+    0 0 50px rgba(212, 175, 55, 0.2),
+    inset 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.passion-pulse {
+  animation: passion-pulse 2s ease-in-out infinite;
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes passion-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.03); }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* Botões emocionais */
+.btn-romantic {
+  background: linear-gradient(135deg, var(--color-love-red), var(--color-passion-pink));
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
+}
+
+.btn-romantic:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(139, 0, 0, 0.6);
+  background: linear-gradient(135deg, var(--color-passion-pink), var(--color-accent-love));
+}
+
+.btn-romantic:active {
+  transform: translateY(0);
+}
+
+.btn-romantic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-romantic:hover::before {
+  left: 100%;
+}
+
+.btn-golden {
+  background: linear-gradient(135deg, var(--color-golden-glow), var(--color-romantic-gold));
+  color: #000;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-golden:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+}
+
+/* Textos especiais */
+.text-romantic {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, var(--color-text-soft), var(--color-text-golden));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
+}
+
+.text-golden {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: var(--color-text-golden);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Cards emocionais */
+.card-romantic {
+  background: rgba(26, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-romantic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--color-passion-pink), transparent);
+}
+
+.card-romantic:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-passion-pink);
+  box-shadow: 0 15px 40px rgba(139, 0, 0, 0.3);
+}
+
+.card-golden {
+  background: rgba(42, 32, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card-golden:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-golden-glow);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+/* Efeitos de entrada */
+.fade-in-romantic {
+  animation: fade-in-romantic 1.5s ease-out forwards;
+}
+
+@keyframes fade-in-romantic {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Partículas flutuantes */
+.floating-hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.floating-hearts span {
+  position: absolute;
+  color: var(--color-passion-pink);
+  font-size: 20px;
+  opacity: 0;
+  animation: float-heart 15s linear infinite;
+}
+
+@keyframes float-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .text-romantic {
+    font-size: 1.8rem;
+  }
+  
+  .text-golden {
+    font-size: 1.5rem;
+  }
+  
+  .btn-romantic, .btn-golden {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .passion-pulse,
+  .heartbeat,
+  .float-soft {
+    animation: none;
+  }
+}
