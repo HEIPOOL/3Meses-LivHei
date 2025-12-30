@@ -3,7 +3,6 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html, Float, Text, Stars, Sparkles, useTexture } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
-import GoldenSparkles from '../components/3d/GoldenSparkles';
 import { useResponsive } from '../hooks/useResponsive';
 import { 
   Menu, X, Home, Search, Settings, Info, 
@@ -2125,4 +2124,5 @@ export default function GalleryPage() {
 .animate-shimmer {
   animation: shimmer 2s infinite linear;
 }
+
 */
