@@ -198,6 +198,74 @@ const ShinyParticles = ({ count = 200, color = '#FFD700' }) => {
 };
 
 // ============================================
+// COMPONENTE GOLDEN SPARKLES (ADICIONE ESTE CÓDIGO)
+// ============================================
+const GoldenSparkles = ({ 
+  count = 100, 
+  color = '#FFD700', 
+  roomHeight = 10, 
+  enabled = true, 
+  size = 0.2 
+}) => {
+  const pointsRef = useRef();
+  
+  const positions = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i += 3) {
+      pos[i] = (Math.random() - 0.5) * 30;
+      pos[i + 1] = (Math.random() - 0.5) * roomHeight;
+      pos[i + 2] = (Math.random() - 0.5) * 30;
+    }
+    return pos;
+  }, [count, roomHeight]);
+
+  const sizes = useMemo(() => {
+    const sizeArray = new Float32Array(count);
+    for (let i = 0; i < count; i++) {
+      sizeArray[i] = Math.random() * 0.5 + size;
+    }
+    return sizeArray;
+  }, [count, size]);
+
+  useFrame((state) => {
+    if (pointsRef.current && enabled) {
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+      pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.1;
+    }
+  });
+
+  if (!enabled) return null;
+
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-size"
+          count={sizes.length}
+          array={sizes}
+          itemSize={1}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.5}
+        color={color}
+        transparent
+        opacity={0.8}
+        sizeAttenuation
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+      />
+    </points>
+  );
+};
+
+// ============================================
 // COMPONENTE DE QUADRO ULTRA BRILHANTE
 // ============================================
 
@@ -2102,26 +2170,3 @@ export default function GalleryPage() {
     </div>
   );
 }
-
-// ============================================
-// ESTILOS CSS ADICIONAIS (adicionar ao globals.css)
-// ============================================
-/*
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-float {
-  animation: float 10s infinite ease-in-out;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite linear;
-}
-*/
