@@ -2124,5 +2124,4 @@ export default function GalleryPage() {
 .animate-shimmer {
   animation: shimmer 2s infinite linear;
 }
-
 */
